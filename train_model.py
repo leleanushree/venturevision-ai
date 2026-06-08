@@ -48,17 +48,17 @@ def get_models() -> dict:
             class_weight="balanced", random_state=42
         ),
         "Random Forest": RandomForestClassifier(
-            n_estimators=200, max_depth=15, min_samples_split=4,
+            n_estimators=50, max_depth=8, min_samples_split=4,
             class_weight="balanced", random_state=42, n_jobs=-1
         ),
         "XGBoost": XGBClassifier(
-            n_estimators=300, max_depth=6, learning_rate=0.05,
+            n_estimators=100, max_depth=4, learning_rate=0.05,
             subsample=0.8, colsample_bytree=0.8,
             use_label_encoder=False, eval_metric="mlogloss",
             random_state=42, verbosity=0,
         ),
         "Gradient Boosting": GradientBoostingClassifier(
-            n_estimators=200, max_depth=5, learning_rate=0.05,
+            n_estimators=100, max_depth=4, learning_rate=0.05,
             subsample=0.8, random_state=42
         ),
     }

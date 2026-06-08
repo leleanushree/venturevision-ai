@@ -133,6 +133,7 @@ def preprocess_pipeline(path: str = DATA_PATH):
 
     df = load_raw_data(path)
     df = clean_data(df)
+    df = df.sample(n=min(20000, len(df)), random_state=42)  # limit for speed
 
     X, y, encoders, scaler, label_encoder, feature_names = encode_and_scale(df, fit=True)
 
