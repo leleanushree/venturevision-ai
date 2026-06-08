@@ -1,5 +1,5 @@
 """
-Page 6 – Model Performance
+Page 5 – Model Performance
 Accuracy, confusion matrix, classification report, ROC curves, model comparison.
 """
 
@@ -110,7 +110,6 @@ if y_test is not None and y_pred is not None:
         output_dict=True,
         zero_division=0,
     )
-    # Convert to a nice table
     report_rows = []
     for label in class_names + ["macro avg", "weighted avg"]:
         if label in report:

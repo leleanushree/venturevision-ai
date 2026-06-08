@@ -58,7 +58,6 @@ st.markdown(
             <span class="pill">Acquisition Analysis</span>
             <span class="pill">Failure Risk</span>
             <span class="pill">AI Insights</span>
-            <span class="pill">What-If Simulation</span>
         </p>
     </div>
     """,
@@ -96,7 +95,7 @@ with col_left:
         - 🔴 **Failure** — company shuts down
 
         The system also provides **explainable AI insights**, risk flags, and
-        interactive what-if simulations to support better decision-making.
+        interactive analytics to support better decision-making.
         """
     )
 
@@ -138,16 +137,15 @@ st.markdown("---")
 
 # ── Navigation guide ──────────────────────────────────────────────────────────
 st.subheader("🗺️ Navigation Guide")
-n1, n2, n3, n4, n5, n6 = st.columns(6)
+n1, n2, n3, n4, n5 = st.columns(5)
 pages = [
     ("🏠", "Home", "You are here"),
     ("🔮", "Predictor", "Input startup details for prediction"),
     ("💡", "AI Insights", "Strengths, risks & improvement plan"),
-    ("🧪", "What-If", "Simulate parameter changes"),
     ("📈", "Analytics", "EDA & interactive dashboards"),
     ("🏆", "Model Performance", "Metrics, ROC, confusion matrix"),
 ]
-for col, (icon, title, desc) in zip([n1, n2, n3, n4, n5, n6], pages):
+for col, (icon, title, desc) in zip([n1, n2, n3, n4, n5], pages):
     with col:
         st.markdown(
             f"""

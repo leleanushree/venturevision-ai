@@ -184,7 +184,7 @@ if submitted:
         )
         st.plotly_chart(fig_bar, use_container_width=True)
 
-    # ── Save to session state for What-If page ────────────────────────────────
+    # ── Save to session state for AI Insights page ────────────────────────────
     st.session_state["last_input"] = input_dict
     st.session_state["last_proba"] = proba
-    st.info("💡 Head to the **What-If Simulator** page to see how changing inputs affects the outcome!")
+    st.info("💡 Head to the **AI Insights** page to see strengths, risks, and recommendations!")

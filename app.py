@@ -40,7 +40,6 @@ with st.sidebar:
         - 🏠 **Home** – Overview & dataset
         - 🔮 **Predictor** – Get a prediction
         - 💡 **AI Insights** – Strengths & risks
-        - 🧪 **What-If** – Scenario simulator
         - 📈 **Analytics** – EDA dashboard
         - 🏆 **Model Performance** – Metrics & ROC
         """
