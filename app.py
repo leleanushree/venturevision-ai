@@ -70,4 +70,3 @@ with st.sidebar:
     st.caption("Built with Streamlit · Scikit-learn · XGBoost · Plotly")
 
 # ── Redirect to Home page ─────────────────────────────────────────────────────
-st.switch_page("pages/1_Home.py")
