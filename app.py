@@ -9,6 +9,7 @@ Run with:
 """
 
 import streamlit as st
+import os, sys, subprocess
 
 st.set_page_config(
     page_title="VentureVision AI",
@@ -20,6 +21,27 @@ st.set_page_config(
         "About": "VentureVision AI – Startup Outcome Prediction & Decision Support",
     },
 )
+
+# ── Auto-train model if model.pkl is missing (for Streamlit Cloud) ────────────
+BASE_DIR   = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "models", "model.pkl")
+
+if not os.path.exists(MODEL_PATH):
+    st.info("⏳ First launch: Training ML models... This takes 3-4 minutes. Please wait.")
+    progress = st.progress(0, text="Starting training pipeline...")
+    progress.progress(10, text="Loading and preprocessing data...")
+    result = subprocess.run(
+        [sys.executable, os.path.join(BASE_DIR, "train_model.py")],
+        capture_output=True, text=True, cwd=BASE_DIR
+    )
+    progress.progress(100, text="Done!")
+    if result.returncode != 0:
+        st.error("❌ Training failed. Error details:")
+        st.code(result.stderr[-3000:])
+        st.stop()
+    else:
+        st.success("✅ Model trained! Loading app now...")
+        st.rerun()
 
 # ── Global sidebar branding ───────────────────────────────────────────────────
 with st.sidebar:
@@ -47,5 +69,5 @@ with st.sidebar:
     st.markdown("---")
     st.caption("Built with Streamlit · Scikit-learn · XGBoost · Plotly")
 
-# ── Redirect to Home page ────────────────────────────────────────────────────
+# ── Redirect to Home page ─────────────────────────────────────────────────────
 st.switch_page("pages/1_Home.py")
